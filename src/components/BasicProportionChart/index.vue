@@ -22,15 +22,15 @@ export default {
       let list = [
         {
           name: '现有确诊',
-          value: calculateProportion(this.data.currentConfirmedCount, this.data.confirmedCount)
+          value: calculateProportion(this.data.currentConfirmedCount.value, this.data.confirmedCount.value)
         },
         {
           name: '境外输入',
-          value: calculateProportion(this.data.importedCount, this.data.confirmedCount)
+          value: calculateProportion(this.data.importedCount.value, this.data.confirmedCount.value)
         },
         {
           name: '累计治愈',
-          value: calculateProportion(this.data.curedCount, this.data.confirmedCount)
+          value: calculateProportion(this.data.curedCount.value, this.data.confirmedCount.value)
         }
       ]
       let titleList = [], seriesList = []

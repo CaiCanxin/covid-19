@@ -1,10 +1,10 @@
 <template>
   <div class="basic-data-item">
-    <div class="basic-data-item-title">{{label}}
-      <i v-if="inCrValue > 0" class="el-icon-caret-top" style="color: #60FE5E;"></i>
+    <div class="basic-data-item-title">{{ label }}
+      <i v-if="data.incrValue > 0" class="el-icon-caret-top" style="color: #60FE5E;"></i>
       <i v-else class="el-icon-caret-bottom" style="color: #F44182;"></i>
-      <span :class="[ inCrValue > 0 ? valueUpClass: valueDownClass, valueClass]">
-        {{ inCrValue }}
+      <span :class="[ data.incrValue > 0 ? valueUpClass: valueDownClass, valueClass]">
+        {{ data.incrValue }}
       </span>
     </div>
     <div class="basic-data-item-value">
@@ -16,11 +16,32 @@
   </div>
 </template>
 <script>
+
+const getNumberStyle = (color = '#E8EAF6', fontSize = 30, fontWeight = 'bolder') => {
+  return {
+    fontSize: fontSize,
+    fill: color,
+    fontWeight: fontWeight
+  }
+}
+
 export default {
   props: {
     label: String,
-    config: Object,
-    inCrValue: Number
+    data: {
+      value: Number,
+      incrValue: Number,
+      color: String
+    },
+  },
+  computed: {
+    config() {
+      return {
+        number: [this.data.value],
+        content: '{nt}',
+        style: getNumberStyle(this.data.color),
+      }
+    }
   },
   data() {
     return {

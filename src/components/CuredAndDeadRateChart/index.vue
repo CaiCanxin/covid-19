@@ -8,11 +8,6 @@ export default {
     title: String,
     data: Object,
   },
-  data () {
-    return {
-      d: 99
-    }
-  },
   methods: {
     initChart () {
       if (null != chart && undefined != chart) {
