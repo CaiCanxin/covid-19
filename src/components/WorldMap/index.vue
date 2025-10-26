@@ -1,12 +1,12 @@
 <template>
   <div
-    class="main-map-chart"
-    ref="dataMap"
-    style="width: 100%; height: 100%"
-   />
+      class="main-map-chart"
+      ref="dataMap"
+      style="width: 100%; height: 100%"
+  />
 </template>
 <script>
-import '../../assets/china'
+import '../../assets/world'
 let chart = null
 export default {
   props: {
@@ -112,7 +112,7 @@ export default {
           show: !0,
         },
         geo: {
-          map: 'china',
+          map: 'world',
           roam: true, // 开启缩放和平移
           scaleLimit: {
             min: 1, // 最小缩放

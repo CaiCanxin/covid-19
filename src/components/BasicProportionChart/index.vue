@@ -25,8 +25,8 @@ export default {
           value: calculateProportion(this.data.currentConfirmedCount.value, this.data.confirmedCount.value)
         },
         {
-          name: '境外输入',
-          value: calculateProportion(this.data.importedCount.value, this.data.confirmedCount.value)
+          name: '疑似感染',
+          value: calculateProportion(this.data.suspectedCount.value, this.data.confirmedCount.value)
         },
         {
           name: '累计治愈',
