@@ -149,37 +149,45 @@
           </el-table>
         </div>
       </el-dialog>
-      <!-- 关于弹窗 -->
-      <el-dialog
-          title="关于"
-          :visible.sync="aboutDialogVisible"
-          width="30%"
-      >
-        <about />
-      </el-dialog>
-      <!-- 关于图标 -->
-      <div class="about-wraper">
-        <i
-            class="el-icon-info"
-            style="font-size: 30px"
-            @click="aboutDialogVisible = !aboutDialogVisible"
-        ></i>
-      </div>
-      <div class="worldmap-btn-wraper">
-        <i
-            class="el-icon-map-location"
-            style="font-size: 30px"
-            @click="navigate('/')"
-        ></i>
-      </div>
-      <div class="sentiment-btn-wraper">
-        <i
-            class="el-icon-data-analysis"
-            style="font-size: 30px"
-            @click="navigate('/sentiment-analysis')"
-        ></i>
-      </div>
     </div>
+
+    <!-- 按钮列表 -->
+    <div class="calendar-btn-wraper">
+      <i
+          class="el-icon-map-location"
+          style="font-size: 30px"
+          @click="navigate('/')"
+      ></i>
+    </div>
+    <div class="worldmap-btn-wraper">
+      <i
+          class="el-icon-view"
+          style="font-size: 30px"
+          @click="navigate('/calendar')"
+      ></i>
+    </div>
+    <div class="sentiment-btn-wraper">
+      <i
+          class="el-icon-data-analysis"
+          style="font-size: 30px"
+          @click="navigate('/sentiment-analysis')"
+      ></i>
+    </div>
+    <div class="about-wraper">
+      <i
+          class="el-icon-info"
+          style="font-size: 30px"
+          @click="aboutDialogVisible = !aboutDialogVisible"
+      ></i>
+    </div>
+    <!-- 关于弹窗 -->
+    <el-dialog
+        title="关于"
+        :visible.sync="aboutDialogVisible"
+        width="30%"
+    >
+      <about />
+    </el-dialog>
   </div>
 </template>
 <script>
@@ -595,6 +603,33 @@ h1 {
 
 .chart-item-bottom-sep {
   margin-bottom: 25px;
+}
+
+.calendar-btn-wraper {
+  position: fixed;
+  bottom: 280px;
+  right: 30px;
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 5px 25px rgba(79, 172, 254, 0.5);
+  transition: all 0.3s ease;
+  z-index: 1000;
+}
+
+.calendar-btn-wraper:hover {
+  transform: scale(1.1) rotate(-10deg);
+  box-shadow: 0 8px 35px rgba(79, 172, 254, 0.8);
+}
+
+.calendar-btn-wraper i {
+  color: #fff;
+  font-size: 32px !important;
 }
 
 .worldmap-btn-wraper {

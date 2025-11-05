@@ -181,37 +181,44 @@
           </el-table>
         </div>
       </el-dialog>
-      <!-- 关于弹窗 -->
-      <el-dialog
-        title="关于"
-        :visible.sync="aboutDialogVisible"
-        width="30%"
-      >
-        <about />
-      </el-dialog>
-      <!-- 关于图标 -->
-      <div class="about-wraper">
-        <i
-          class="el-icon-info"
-          style="font-size: 30px"
-          @click="aboutDialogVisible = !aboutDialogVisible"
-        ></i>
-      </div>
-      <div class="worldmap-btn-wraper">
-        <i
+    </div>
+    <!-- 按钮列表 -->
+    <div class="calendar-btn-wraper">
+      <i
           class="el-icon-map-location"
           style="font-size: 30px"
           @click="navigate('/world-map-layout')"
-        ></i>
-      </div>
-      <div class="sentiment-btn-wraper">
-        <i
+      ></i>
+    </div>
+      <div class="worldmap-btn-wraper">
+      <i
+          class="el-icon-view"
+          style="font-size: 30px"
+          @click="navigate('/calendar')"
+      ></i>
+    </div>
+    <div class="sentiment-btn-wraper">
+      <i
           class="el-icon-data-analysis"
           style="font-size: 30px"
           @click="navigate('/sentiment-analysis')"
-        ></i>
-      </div>
+      ></i>
     </div>
+    <div class="about-wraper">
+      <i
+          class="el-icon-info"
+          style="font-size: 30px"
+          @click="aboutDialogVisible = !aboutDialogVisible"
+      ></i>
+    </div>
+    <!-- 关于弹窗 -->
+    <el-dialog
+        title="关于"
+        :visible.sync="aboutDialogVisible"
+        width="30%"
+    >
+      <about />
+    </el-dialog>
   </div>
 </template>
 <script>
@@ -225,8 +232,8 @@ import CuredAndDeadRateChart from '../components/CuredAndDeadRateChart'
 import CurrentConfirmedCompareBarChart from '../components/CurrentConfirmedCompareBarChart'
 import DataMap from '../components/DataMap'
 import ProvinceRankingBarChart from '../components/ProvinceRankingBarChart'
-import covid19Service from '../api/covid19'
 import {chinaProvinceData, parseCovidData} from '../utils/csvUtil'
+import dailyList from '../../public/covid19-daily-list.json';
 
 export default {
   components: {
@@ -322,16 +329,18 @@ export default {
       }
     },
     queryTrendDataList () {
-      let self = this
-      covid19Service.getDailyList().then((res) => {
-        if (!res.success) {
-          // TODO 错误处理...
-          console.log('错误:' + res.info)
-          return
-        }
-        // 重置图表数据
-        self.setTrendDataList(res.data)
-      })
+      dailyList.data
+      // let self = this
+      // covid19Service.getDailyList().then((res) => {
+      //   if (!res.success) {
+      //     // TODO 错误处理...
+      //     console.log('错误:' + res.info)
+      //     return
+      //   }
+      //   // 重置图表数据
+      //   self.setTrendDataList(res.data)
+      // })
+      this.setTrendDataList(dailyList.data)
     },
     setBasicData (data) {
       return {
@@ -644,7 +653,7 @@ h1 {
 
 .worldmap-btn-wraper {
   position: fixed;
-  bottom: 195px;
+  bottom: 400px;
   right: 30px;
   width: 60px;
   height: 60px;
@@ -665,6 +674,33 @@ h1 {
 }
 
 .worldmap-btn-wraper i {
+  color: #fff;
+  font-size: 32px !important;
+}
+
+.calendar-btn-wraper {
+  position: fixed;
+  bottom: 280px;
+  right: 30px;
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 5px 25px rgba(79, 172, 254, 0.5);
+  transition: all 0.3s ease;
+  z-index: 1000;
+}
+
+.calendar-btn-wraper:hover {
+  transform: scale(1.1) rotate(-10deg);
+  box-shadow: 0 8px 35px rgba(79, 172, 254, 0.8);
+}
+
+.calendar-btn-wraper i {
   color: #fff;
   font-size: 32px !important;
 }
