@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import * as echarts from 'echarts'
+import * as echarts from 'echarts';
 
 export default {
   name: 'PredictionChart',
@@ -85,7 +85,12 @@ export default {
           },
           axisLabel: {
             color: '#a0d8ef',
-            interval: 4
+            interval: (index, value) => {
+              // 解析日期并判断是否为每月1号
+              const date = new Date(value)
+              return date.getDate() === 1
+            },
+            rotate: 30
           }
         },
         yAxis: {

@@ -18,8 +18,8 @@
         <el-col :span="12">
           <div class="chart-card">
             <div class="card-header">
-              <h3>舆情分析 - 词云图</h3>
-              <div class="slider-label">当前日期：{{ currentDate }}</div>
+              <h3>词云图</h3>
+              <div class="slider-label">当前日期:{{ currentDate }}</div>
             </div>
             <div class="chart-content">
               <word-cloud-chart
@@ -41,12 +41,13 @@
         <el-col :span="12">
           <div class="chart-card">
             <div class="card-header">
-              <h3>舆情分析 - 情感走势</h3>
+              <h3>情感变化趋势</h3>
             </div>
             <div class="chart-content">
               <sentiment-line-chart
                 ref="sentimentLineChart"
                 :data="sentimentLineData"
+                :baseline="0.6"
                 style="width: 100%; height: 450px"
               />
             </div>
@@ -91,7 +92,7 @@ export default {
   },
   data() {
     return {
-      title: '新冠肺炎舆情分析与预测',
+      title: '新冠肺炎舆情情感趋势变化与疫情人数',
       dateIndex: 6,
       dateList: Array.from({ length: 7 }, (_, i) => {
         const d = new Date('2020-02-07')

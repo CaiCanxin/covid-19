@@ -3,14 +3,14 @@
 </template>
 
 <script>
-import * as echarts from 'echarts/core';
 import { LineChart } from 'echarts/charts';
 import {
-  TitleComponent,
-  TooltipComponent,
-  GridComponent,
-  VisualMapComponent
+    GridComponent,
+    TitleComponent,
+    TooltipComponent,
+    VisualMapComponent
 } from 'echarts/components';
+import * as echarts from 'echarts/core';
 import { CanvasRenderer } from 'echarts/renderers';
 
 echarts.use([
@@ -90,6 +90,26 @@ export default {
             color: '#666'
           }
         },
+        markLine: {
+          data: [
+            {
+              yAxis: 0.6,
+              name: '基准线',
+              lineStyle: {
+                color: '#ff9800',
+                type: 'dashed',
+                width: 2
+              },
+              label: {
+                show: true,
+                formatter: '基准线: 0.6',
+                position: 'end',
+                color: '#ff9800',
+                fontSize: 12
+              }
+            }
+          ]
+        },
         visualMap: {
           show: false,
           pieces: [{
@@ -124,6 +144,27 @@ export default {
                 color: 'rgba(255, 107, 107, 0.4)'
               }])
             },
+            markLine: {
+              silent: true,
+              data: [
+                {
+                  yAxis: 0.6,
+                  name: '基准线',
+                  lineStyle: {
+                    color: '#ff9800',
+                    type: 'dashed',
+                    width: 2
+                  },
+                  label: {
+                    show: true,
+                    formatter: '基准线: 0.6',
+                    position: 'end',
+                    color: '#ff9800',
+                    fontSize: 12
+                  }
+                }
+              ]
+            }
           }
         ]
       };
